@@ -1,8 +1,13 @@
+# Import Bottle modules.
 from bottle import (app, Bottle, get, post, response, request, route, run, jinja2_view,
 redirect, static_file)
-
+# System libaries
 import json
+
+# Local imports
 import chat
+import dirs
+# api_tokens contains the unique Slack API tokens used to access the API if needed.
 from api_tokens import devtoken
 
 @get("/")
@@ -12,9 +17,9 @@ def main_menu():
     channels = [{ 'name':"actionone" }]
     return { 'channels':channels }
 
-@get("/actionone/")
+@get("/<chan>/")
 @jinja2_view("templates/chat.html")
-def show_a1_msg():
+def chan_msg(chan):
     chat_data = chat.show_messages()
     return { 'chat_log':chat_data }
 
