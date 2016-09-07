@@ -1,0 +1,16 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+
+  <h3 class="text-center">Action One</h3>
+
+  <div class="card">
+      <ul class="list-group list-group-flush">
+        {% for message in chat_log %}
+          <li class="list-group-item"> <b>{{ message.real_name }}</b>: {{ message.text }} 
+            <div class="text-right">{{ message.time }}</div></li>
+        {% endfor %}
+      </ul>
+  </div>
+
+{% endblock %}

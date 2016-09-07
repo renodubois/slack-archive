@@ -1,0 +1,24 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+
+<h3 class="text-center">Missouri S&T Hall Gov. Slack Archives</h3>
+
+<br><br>
+
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <ul class="list-group list-group-flush">
+        {% for chan in channels %}
+        <div class="text-center">
+            <li class="list-group-item"><a href="/{{ chan.name }}/">{{ chan.name }}</a></li>
+        </div>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="cold-md-4"></div>
+</div>
+
+
+{% endblock %}
