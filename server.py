@@ -13,14 +13,15 @@ from api_tokens import devtoken
 @get("/")
 @jinja2_view("templates/main_menu.html")
 def main_menu():
-    # List used for testing purposes.
-    channels = [{ 'name':"actionone" }]
+    # Grabs the names of all the folders in the logs directory, to be displayed on the main menu.
+    channels = dirs.get_chan_names()
+    #channels = [{ 'name':"actionone" }]
     return { 'channels':channels }
 
 @get("/<chan>/")
 @jinja2_view("templates/chat.html")
 def chan_msg(chan):
-    chat_data = chat.show_messages()
+    chat_data = chat.show_messages(chan)
     return { 'chat_log':chat_data }
 
 
