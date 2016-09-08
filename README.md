@@ -3,4 +3,4 @@ Takes Slack exported .json files and turns them into a user friendly website, us
 
 More info regarding usage will be added at a later date.
 
-Currently only takes a single file and outputs the data in a semi-readable format.
+Currently displays messages from a 'logs/' directory. 
