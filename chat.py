@@ -1,5 +1,6 @@
 import json
 from api_tokens import devtoken
+from pathlib import Path
 
 userspath = "logs/users.json"
 
@@ -27,11 +28,12 @@ def show_messages(chan):
         for msg in chat_data:
             # Replaces the mentions with actual names
             # First make sure that the text is an actual string
-            if 'text' in msg and type(msg['text']) is not None:
-                if 'subtype' in msg:
-                    msg['text'] = mentions_to_names(msg['text'], msg['subtype'])
-                else:
-                    msg['text'] = mentions_to_names(msg['text'], "")
+            if 'text' in msg:
+                if type(msg['text']) is not None:
+                    if 'subtype' in msg:
+                        msg['text'] = mentions_to_names(msg['text'], msg['subtype'])
+                    else:
+                        msg['text'] = mentions_to_names(msg['text'], "")
             for usr in user_data:
                 # Check to see if it's a user's post, or a bot post.
                 if 'bot_id' in msg:
@@ -48,8 +50,9 @@ def show_messages(chan):
                         # Add the user_name attribute, used for mouseover display
                         msg['user_name'] = usr['name']
         for msg in chat_data:
-            if msg['text'] is not None:
-                total_chat_data.append(msg)
+            if 'text' in msg:
+                if msg['text'] is not None:
+                    total_chat_data.append(msg)
         # TODO: Change mentions to real names
         # TODO: Change 'ts' to a printable date
     return total_chat_data
