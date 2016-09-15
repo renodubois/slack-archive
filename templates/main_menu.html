@@ -1,4 +1,4 @@
-{% extends "templates/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
     <ul class="list-group list-group-flush">
         {% for chan in channels %}
         <div class="text-center">
-            <li class="list-group-item"><a href="/{{ chan.name }}/">{{ chan.name }}</a></li>
+            <li class="list-group-item"><a href="{{ chan.full_path }}">{{ chan.name }}</a></li>
         </div>
         {% endfor %}
     </ul>
