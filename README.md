@@ -1,6 +1,6 @@
 # slack-archive
-Takes Slack exported .json files and turns them into a user friendly website, using Bottle and Bootstrap.
+Takes Slack exported .json files and generates readable html files.
 
 More info regarding usage will be added at a later date.
 
-Currently displays messages from a 'logs/' directory. 
+Currently displays messages from a 'logs/' directory, 
